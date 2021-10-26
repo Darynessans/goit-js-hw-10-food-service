@@ -14,21 +14,21 @@ listCards.insertAdjacentHTML("beforeend", template(gallery));
 const body = document.querySelector("body");
 body.classList.add(localStorage.getItem("theme"));
 
-const change = document.querySelector(".theme-switch__toggle");
-change.checked = JSON.parse(localStorage.getItem("isChecked"));
+const inp = document.querySelector(".theme-switch__toggle");
+inp.checked = JSON.parse(localStorage.getItem("isChecked"));
 
-change.addEventListener("click", () => {
+
+
+inp.addEventListener("change", () => {
     if (!body.classList.contains(Theme.DARK)) {
       localStorage.setItem("theme", Theme.DARK);
-      localStorage.setItem("isChecked", "true");  
+      inp.checked = JSON.stringify(localStorage.setItem("isChecked", "true"));  
       body.classList.add(localStorage.getItem("theme"));
-      console.log("++++", localStorage.getItem("isChecked"));
       inp.checked = JSON.parse(localStorage.getItem("isChecked"));
     } else {
       localStorage.setItem("theme", Theme.LIGHT);
-      localStorage.setItem("isChecked", "false");
+      inp.checked = JSON.stringify(localStorage.setItem("isChecked", "false"));
       body.classList.remove(Theme.DARK);
-      console.log("----", localStorage.getItem("isChecked"));
       inp.checked = JSON.parse(localStorage.getItem("isChecked"));
       
     }
